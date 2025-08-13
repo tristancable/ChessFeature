@@ -11,6 +11,7 @@ namespace Chess.View.Window
     using Chess.ViewModel.Game;
     using System;
     using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -33,10 +34,10 @@ namespace Chess.View.Window
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
-        public MainWindow()
+        public MainWindow(bool isChess960 = false)
         {
-            this.InitializeComponent();
-            this.game = new ChessGameVM(this.Choose);
+            InitializeComponent();
+            this.game = new ChessGameVM(this.Choose, isChess960);
             this.promotionSelector = new PromotionSelector();
             this.DataContext = this.game;
         }
@@ -88,7 +89,7 @@ namespace Chess.View.Window
             {
                 return null;
             }
-            
+
             if (updates.Count == 1)
             {
                 return updates[0];
@@ -103,6 +104,13 @@ namespace Chess.View.Window
                 selectedPiece != null
                     ? promotions[selectedPiece]
                     : null;
+        }
+
+        private void MainMenu_Click(object sender, EventArgs e)
+        {
+            var menuWindow = new MainMenuWindow();
+            menuWindow.Show();
+            this.Close();
         }
     }
 }

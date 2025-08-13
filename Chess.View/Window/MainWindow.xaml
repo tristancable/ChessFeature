@@ -27,6 +27,7 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="Game">
+                <MenuItem Header="Main Menu" Click="MainMenu_Click" />
                 <MenuItem Header="New" Command="{Binding NewCommand}" InputGestureText="Ctrl+N">
                     <MenuItem.Icon>
                         <icon:NewIcon />
